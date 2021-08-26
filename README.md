@@ -71,7 +71,7 @@ Briefly familiarise yourself with the contents and structure of the `task-2` fol
 2. If you're connecting to a local PostgreSQL instance, make sure it's running (on the port that you specified in your `.env` file).
 3. `cd` into `task-3` folder, install dependencies, then run the `db-reset` script (see `package.json` for details).
 
-**⚠️** we will be repeatedly creating and dropping a `users` table in this task. So, if your database happens to already contain a `users` table that you don't want to lose, create a fresh, separate database and provide its name instead via `PGDATABASE` environment variable.
+**⚠️** We will be repeatedly creating and dropping a `users` table in this task. So, if your database happens to already contain a `users` table that you don't want to lose, create a fresh, separate database and provide its name instead via `PGDATABASE` environment variable.
 
 ## Tests
 
