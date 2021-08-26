@@ -47,6 +47,8 @@ Briefly familiarise yourself with the contents and structure of the `task-2` fol
    }
    ```
 
+   _See if you can store the non-existing ID in a variable so that you can then refer to the variable throughout your test._
+
 3. Add a test (in `routes/users.test.js`) which checks whether sending a `GET /users/:id` request (using Supertest) for a non-existing ID gives us back a response containing:
 
    - HTTP status 404
@@ -69,7 +71,7 @@ Briefly familiarise yourself with the contents and structure of the `task-2` fol
 2. If you're connecting to a local PostgreSQL instance, make sure it's running (on the port that you specified in your `.env` file).
 3. `cd` into `task-3` folder, install dependencies, then run the `db-reset` script (see `package.json` for details).
 
-**Heads-up:** we will be repeatedly creating and dropping a `users` table in this task. So, if your database happens to already contain a `users` table that you don't want to lose, create a fresh, separate database and provide its name instead via `PGDATABASE` environment variable.
+**⚠️** we will be repeatedly creating and dropping a `users` table in this task. So, if your database happens to already contain a `users` table that you don't want to lose, create a fresh, separate database and provide its name instead via `PGDATABASE` environment variable.
 
 ## Tests
 
@@ -87,7 +89,7 @@ complete the following:
 - Write a test (in `routes/users.test.js`) for each scenario.
 - Assert whether all the expected information (e.g. HTTP status code, response's body's structure) is present within the response.
 
-Seeing a yellow warning like `Jest did not exit one second after the test run has completed.` when you run your tests? Google the warning and try to work out how to get the tests to gracefully end. Potentially helpful:
+⚠️ Seeing a yellow warning like `Jest did not exit one second after the test run has completed.` when you run your tests? Google the warning and try to work out how to get the tests to gracefully end. Potentially helpful:
 
 - https://stackoverflow.com/questions/53935108/
 - https://node-postgres.com/features/pooling#shutdown
