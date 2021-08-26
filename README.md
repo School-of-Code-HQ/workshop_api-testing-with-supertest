@@ -47,7 +47,7 @@ Briefly familiarise yourself with the contents and structure of the `task-2` fol
    }
    ```
 
-   _See if you can store the non-existing ID in a variable so that you can then refer to the variable throughout your test._
+   _See if you can store the existing ID in a variable so that you can then refer to the variable throughout your test._
 
 3. Add a test (in `routes/users.test.js`) which checks whether sending a `GET /users/:id` request (using Supertest) for a non-existing ID gives us back a response containing:
 
