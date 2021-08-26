@@ -20,7 +20,7 @@ test("Has the structure { success: true }", () => {
  *      - "value": ANY number
  *      - "title": ANY string
  */
-test("Has the structure { value: <number> }", () => {
+test("Has the structure { value: <number>, title: <string> }", () => {
   const actual = {
     value: 5,
     title: "THE CLOWN IN THE SHOP (1984)",
@@ -38,6 +38,10 @@ test("Has the structure { value: <number> }", () => {
  *          - "userId": ANY number
  *
  * Only the function has been provided. You'll have to write everything else.
+ *
+ * Since the function is asynchronous, you may need to read up on how Jest handles that.
+ *
+ * @link https://jestjs.io/docs/asynchronous
  */
 const getAuthentication = async () => {
   return {
@@ -59,6 +63,10 @@ const getAuthentication = async () => {
  *          - "username": ANY string
  *
  * Only the function has been provided. You'll have to write everything else.
+ *
+ * Since the function is asynchronous, you may need to read up on how Jest handles that.
+ *
+ * @link https://jestjs.io/docs/asynchronous
  */
 const getUsernames = async () => {
   return {
