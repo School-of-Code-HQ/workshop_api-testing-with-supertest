@@ -1,49 +1,56 @@
 /**
- * Before we start testing APIs, the point here is to become more familiar with the matchers that Jest gives us and how we can check nested/complex structures.
+ * Before we start testing APIs, let's get some practice with Jest matchers. Matchers allow us to check if a value meets our expectations.
  *
- * Where necessary, have a look at the Jest docs.
- *
- * @link https://jestjs.io/docs/expect
+ * Where necessary, have a look at the Jest docs: https://jestjs.io/docs/expect
  */
 
-/* Write a test that checks whether `actual` is an object that contains a single key-value pair:
- *      - "success": true
+/**
+ * Write a test that checks whether the variable `apiResponse` contains an object that has the following structure:
+ *
+ *    {
+ *      success: true
+ *    }
  */
-test("Has the structure { success: true }", () => {
-  const actual = {
+test("Has the structure { success: true }", function () {
+  const apiResponse = {
     success: true,
   };
 });
 
 /**
- * Write a test that checks whether `actual` is an object that contains two key-value pairs:
- *      - "value": ANY number
- *      - "title": ANY string
+ * Write a test that checks whether the variable `apiResponse` contains an object that has the following structure:
+ *
+ *    {
+ *      copiesSold: any number,
+ *      title: any string
+ *    }
+ *
+ * If you're stuck on how to match any number/string, have a look at: https://jestjs.io/docs/expect#expectanyconstructor
  */
-test("Has the structure { value: <number>, title: <string> }", () => {
-  const actual = {
-    value: 5,
-    title: "THE CLOWN IN THE SHOP (1984)",
+test("Has the structure { copiesSold: any number, title: any string }", function () {
+  const apiResponse = {
+    copiesSold: 5014,
+    title: "THE LIGHTHOUSE (1984)",
   };
 });
 
 /**
- * Write a test that checks whether `getAuthentication` (when called) resolves to an object that contains two key-value pairs:
- *      - "success": true
- *      - "payload": object
+ * Write a test that checks whether the asynchronous function `getAuthentication`, when called, resolves to an object that has the following structure:
  *
- *      where "payload" itself contains three key-value pairs:
- *          - "hasAuthenticated": true
- *          - "isAdmin": false
- *          - "userId": ANY number
+ *    {
+ *      success: true,
+ *      payload: {
+ *        hasAuthenticated: true,
+ *        isAdmin: false,
+ *        userId: any number
+ *      }
+ *    }
  *
  * Only the function has been provided. You'll have to write everything else.
  *
- * Since the function is asynchronous, you may need to read up on how Jest handles that.
- *
- * @link https://jestjs.io/docs/asynchronous
+ * Since `getAuthentication` is asynchronous, you may need to read up on how to write an asynchronous test in Jest: https://jestjs.io/docs/asynchronous
  */
-const getAuthentication = async () => {
+async function getAuthentication() {
   return {
     success: true,
     payload: {
@@ -52,25 +59,23 @@ const getAuthentication = async () => {
       userId: 125095,
     },
   };
-};
+}
 
 /**
- * Write a test that checks whether `getUsernames` (when called) resolves to an object that contains two key-value pairs:
- *      - "ok": true
- *      - "payload": array
+ * Write a test that checks whether the asynchronous function `getUsernames`, when called, resolves to an object that has the following structure:
  *
- *      where "payload" itself is an array of objects where each object has a single key-value pair:
- *          - "username": ANY string
+ *    {
+ *      success: true,
+ *      payload: an array of objects with the structure { username: any string },
+ *    }
  *
  * Only the function has been provided. You'll have to write everything else.
  *
- * Since the function is asynchronous, you may need to read up on how Jest handles that.
- *
- * @link https://jestjs.io/docs/asynchronous
+ * Since `getUsernames` is asynchronous, you may need to read up on how to write an asynchronous test in Jest: https://jestjs.io/docs/asynchronous
  */
-const getUsernames = async () => {
+async function getUsernames() {
   return {
-    ok: true,
+    success: true,
     payload: [
       { username: "A" },
       { username: "B" },
@@ -78,4 +83,4 @@ const getUsernames = async () => {
       { username: "D" },
     ],
   };
-};
+}
