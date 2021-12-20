@@ -1,19 +1,18 @@
-const pool = require("../index");
-const createUsersTable = require("./create-table");
-const dropUsersTable = require("./drop-table");
-const seedUsersTable = require("./seed-table");
+import { fileURLToPath } from "url";
+import { pool } from "../index.js";
+import { createUsersTable } from "./create-table.js";
+import { dropUsersTable } from "./drop-table.js";
+import { seedUsersTable } from "./seed-table.js";
 
-const resetUsersTable = async () => {
+export async function resetUsersTable() {
   await dropUsersTable();
   await createUsersTable();
   await seedUsersTable();
-  console.log("Dropped, re-created and seeded 'users' table");
-};
+}
 
-module.exports = resetUsersTable;
-
-if (require.main === module) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   resetUsersTable()
+    .then(() => console.log("Dropped, re-created and re-seeded 'users' table"))
     .catch(console.error)
     .finally(() => pool.end());
 }

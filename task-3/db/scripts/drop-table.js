@@ -1,14 +1,13 @@
-const pool = require("../");
+import { fileURLToPath } from "url";
+import { pool } from "../index.js";
 
-const dropUsersTable = async () => {
+export async function dropUsersTable() {
   await pool.query("DROP TABLE IF EXISTS users;");
-  console.log("Dropped 'users' table");
-};
+}
 
-module.exports = dropUsersTable;
-
-if (require.main === module) {
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
   dropUsersTable()
+    .then(() => console.log("Dropped 'users' table"))
     .catch(console.error)
     .finally(() => pool.end());
 }

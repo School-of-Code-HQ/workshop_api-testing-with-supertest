@@ -1,45 +1,35 @@
-const pool = require("../db");
+import { pool } from "../db/index.js";
 
-const getUsers = async () => {
-  const { rows } = await pool.query("SELECT * FROM users;");
-  return rows;
-};
+export async function getUsers() {
+  const data = await pool.query("SELECT * FROM users;");
+  return data.rows;
+}
 
-const getUsersByUsername = async (nameToFind) => {
-  const { rows } = await pool.query(
+export async function getUsersByUsername(nameToFind) {
+  const data = await pool.query(
     "SELECT * FROM users WHERE username ILIKE $1;",
     [nameToFind]
   );
-  return rows;
-};
+  return data.rows;
+}
 
-const getUserById = async (userId) => {
-  const { rows } = await pool.query("SELECT * FROM users WHERE id = $1;", [
-    userId,
-  ]);
-  return rows[0];
-};
+export async function getUserById(userId) {
+  const data = await pool.query("SELECT * FROM users WHERE id = $1;", [userId]);
+  return data.rows[0];
+}
 
-const createUser = async ({ username }) => {
-  const { rows } = await pool.query(
+export async function createUser(user) {
+  const data = await pool.query(
     "INSERT INTO users (username) VALUES ($1) RETURNING *;",
-    [username]
+    [user.username]
   );
-  return rows[0];
-};
+  return data.rows[0];
+}
 
-const deleteUserById = async (userId) => {
-  const { rows } = await pool.query(
+export async function deleteUserById(userId) {
+  const data = await pool.query(
     "DELETE FROM users WHERE id = $1 RETURNING *;",
     [userId]
   );
-  return rows[0];
-};
-
-module.exports = {
-  getUsers,
-  getUsersByUsername,
-  createUser,
-  deleteUserById,
-  getUserById,
-};
+  return data.rows[0];
+}

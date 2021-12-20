@@ -1,14 +1,13 @@
-const { Pool } = require("pg");
+import pg from "pg";
+import * as config from "../config.js";
 
-const pool = new Pool({
-  host: process.env.PGHOST,
-  user: process.env.PGUSER,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
+export const pool = new pg.Pool({
+  host: config.DB_HOST,
+  user: config.DB_USER,
+  database: config.DB_DATABASE,
+  password: config.DB_PASSWORD,
+  port: config.DB_PORT,
   ssl: {
     rejectUnauthorized: false,
   },
 });
-
-module.exports = pool;
