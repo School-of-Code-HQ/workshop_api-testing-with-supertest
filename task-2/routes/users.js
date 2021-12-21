@@ -1,6 +1,7 @@
-const { Router } = require("express");
+import { Router } from "express";
+import { getUsers, getUserById } from "../models/users.js";
+
 const router = Router();
-const { getUsers, getUserById } = require("../models/users");
 
 router.get("/", (req, res) => {
   const users = getUsers();
@@ -11,14 +12,14 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/:id", (req, res) => {
-  const idToFind = Number(req.params.id);
-  const matchingUser = getUserById(idToFind);
+router.get("/:userId", (req, res) => {
+  const userId = Number(req.params.userId);
+  const matchingUser = getUserById(userId);
 
-  if (!matchingUser) {
+  if (undefined === matchingUser) {
     return res.status(404).json({
       success: false,
-      reason: `No user with ID ${idToFind} was found.`,
+      reason: `No user with ID ${userId} was found.`,
     });
   }
 
@@ -28,4 +29,4 @@ router.get("/:id", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

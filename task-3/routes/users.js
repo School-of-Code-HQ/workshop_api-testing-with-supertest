@@ -1,23 +1,17 @@
-const { Router } = require("express");
-const usersModel = require("../models/users");
+import { Router } from "express";
+import * as usersModel from "../models/users.js";
+
 const router = Router();
 
-router.get("/", async (req, res, next) => {
-  const { username } = req.query;
-  if (!username) {
-    return next();
+router.get("/", async (req, res) => {
+  const username = req.query.username;
+  let users;
+
+  if (username) {
+    users = await usersModel.getUsersByUsername(username);
+  } else {
+    users = await usersModel.getUsers();
   }
-
-  const matchingUsers = await usersModel.getUsersByUsername(username);
-
-  res.json({
-    success: true,
-    payload: matchingUsers,
-  });
-});
-
-router.get("/", async (_, res) => {
-  const users = await usersModel.getUsers();
 
   res.json({
     success: true,
@@ -26,13 +20,13 @@ router.get("/", async (_, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const idToFind = req.params.id;
-  const user = await usersModel.getUserById(idToFind);
+  const userId = req.params.id;
+  const user = await usersModel.getUserById(userId);
 
   if (!user) {
     return res.status(404).json({
       success: false,
-      reason: "No user with that ID was found!",
+      reason: `No user with that ID ${userId} was found!`,
     });
   }
 
@@ -62,4 +56,4 @@ router.delete("/:id", async (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

@@ -1,4 +1,4 @@
-module.exports = [
+export const seedData = [
   { username: "James" },
   { username: "Mary" },
   { username: "Robert" },

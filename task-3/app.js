@@ -1,12 +1,11 @@
-const express = require("express");
-const logger = require("morgan");
-const usersRouter = require("./routes/users");
+import express from "express";
+import logger from "morgan";
+import usersRouter from "./routes/users.js";
 
 const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
-
 app.use("/users", usersRouter);
 
-module.exports = app;
+export default app;
