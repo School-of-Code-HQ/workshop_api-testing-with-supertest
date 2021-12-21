@@ -1,3 +1,4 @@
+// HELPER CODE:
 // A useful library on NPM that gives us some quick, early feedback if our environment is misconfigured.
 // For example, we'll get a helpful error message if an environment variable is required but not set/loaded.
 // Details: https://www.npmjs.com/package/env-var

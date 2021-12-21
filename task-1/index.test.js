@@ -46,20 +46,20 @@ test("Has the structure { copiesSold: any number, title: any string }", function
  *      }
  *    }
  *
- * Only the function has been provided. You'll have to write everything else.
- *
  * Since `getAuthentication` is asynchronous, you may need to read up on how to write an asynchronous test in Jest: https://jestjs.io/docs/asynchronous
  */
-async function getAuthentication() {
-  return {
-    success: true,
-    payload: {
-      isAuthenticated: true,
-      isAdmin: false,
-      userId: 125095,
-    },
-  };
-}
+test("Has the structure { success: true, payload: { hasAuthenticated: true, isAdmin: false, userId: any number } }", function () {
+  async function getAuthentication() {
+    return {
+      success: true,
+      payload: {
+        isAuthenticated: true,
+        isAdmin: false,
+        userId: 125095,
+      },
+    };
+  }
+});
 
 /**
  * Write a test that checks whether the asynchronous function `getUsernames`, when called, resolves to an object that has the following structure:
