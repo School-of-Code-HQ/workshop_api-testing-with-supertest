@@ -53,7 +53,7 @@ test("Has the structure { success: true, payload: { hasAuthenticated: true, isAd
     return {
       success: true,
       payload: {
-        isAuthenticated: true,
+        hasAuthenticated: true,
         isAdmin: false,
         userId: 125095,
       },
