@@ -1,13 +1,11 @@
-import { fileURLToPath } from "url";
+import { dropUsersTable } from "../helpers.js";
 import { pool } from "../index.js";
 
-export async function dropUsersTable() {
-  await pool.query("DROP TABLE IF EXISTS users;");
-}
-
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  dropUsersTable()
-    .then(() => console.log("Dropped 'users' table"))
-    .catch(console.error)
-    .finally(() => pool.end());
+try {
+  await dropUsersTable();
+  console.log("Dropped 'users' table");
+} catch (err) {
+  console.error(err);
+} finally {
+  await pool.end();
 }

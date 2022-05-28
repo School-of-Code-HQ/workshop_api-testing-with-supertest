@@ -1,18 +1,11 @@
-import { fileURLToPath } from "url";
+import { resetUsersTable } from "../helpers.js";
 import { pool } from "../index.js";
-import { createUsersTable } from "./create-table.js";
-import { dropUsersTable } from "./drop-table.js";
-import { seedUsersTable } from "./seed-table.js";
 
-export async function resetUsersTable() {
-  await dropUsersTable();
-  await createUsersTable();
-  await seedUsersTable();
-}
-
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  resetUsersTable()
-    .then(() => console.log("Dropped, re-created and re-seeded 'users' table"))
-    .catch(console.error)
-    .finally(() => pool.end());
+try {
+  await resetUsersTable();
+  console.log("Dropped, re-created and re-seeded 'users' table");
+} catch (err) {
+  console.error(err);
+} finally {
+  await pool.end();
 }
