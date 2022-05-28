@@ -2,12 +2,10 @@
   "private": true,
   "version": "0.0.0",
   "devDependencies": {
-    "@types/jest": "^27.0.3",
-    "cross-env": "^7.0.3",
-    "jest": "^27.4.5"
+    "jest": "^28.1.0"
   },
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "type": "module"
 }
