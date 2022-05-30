@@ -73,7 +73,7 @@ Until then, you should be able to press CTRL + C (or equivalent for your OS/keyb
 # Bonus
 
 - One of the problems we've not addressed is that we're not resetting the database between each test, which means one test can affect another test's outcome. (For example, imagine if we delete user ID 4 in one test, but another test tries to get user ID 4 and expects it to exist.) Have a look at https://jestjs.io/docs/setup-teardown to see how Jest might give us an opportunity to re-build a fresh `users` table for each test.
-  - Stuck? See if `beforeEach` (from Jest) and the function exported in `db/helpers.js` might be useful.
+  - Stuck? See if `beforeEach` (from Jest) and the `resetUsersTable` function exported in `db/helpers.js` might be useful.
 - Discuss why it might be useful to have a fresh `users` table for each test. Are there other (potentially better) ways to get a fresh context?
 - Look at the command associated with the `test` script in `task-3/package.json`. Research and discuss what`--setupFiles dotenv/config` means and does for us.
 - Take turns to summarise to each other what's involved when we're testing an API endpoint.
