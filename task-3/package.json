@@ -3,17 +3,15 @@
   "version": "0.0.0",
   "dependencies": {
     "env-var": "^7.1.1",
-    "express": "^4.17.2",
+    "express": "^4.18.1",
     "morgan": "^1.10.0",
-    "pg": "^8.7.1"
+    "pg": "^8.7.3"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.3",
-    "cross-env": "^7.0.3",
-    "dotenv": "^10.0.0",
-    "jest": "^27.4.5",
-    "nodemon": "^2.0.15",
-    "supertest": "^6.1.6"
+    "dotenv": "^16.0.1",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
   },
   "scripts": {
     "dev": "nodemon -r dotenv/config ./server.js",
@@ -21,7 +19,7 @@
     "db-drop": "node -r dotenv/config ./db/scripts/drop-table.js",
     "db-seed": "node -r dotenv/config ./db/scripts/seed-table.js",
     "db-reset": "node -r dotenv/config ./db/scripts/reset-table.js",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --setupFiles dotenv/config"
   },
   "type": "module"
 }
